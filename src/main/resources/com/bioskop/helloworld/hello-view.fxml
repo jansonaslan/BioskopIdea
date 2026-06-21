@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.bioskop.helloworld.HelloController">
+
+    <MediaView fx:id="backgroundVideo"
+               fitWidth="1600"
+               fitHeight="900"/>
+
+    <VBox alignment="CENTER"
+          layoutX="500"
+          layoutY="150"
+          spacing="15"
+          prefWidth="300"
+          prefHeight="250"
+          style="-fx-background-color: white;
+                 -fx-background-radius: 15;
+                 -fx-padding: 20;">
+
+
+
+    <Label text="BIOSKOPKU"/>
+
+    <TextField fx:id="usernameField"
+               promptText="Input Username"/>
+
+    <PasswordField fx:id="passwordField"
+                   promptText="Input Password"/>
+
+    <Button text="Login"
+            onAction="#login"/>
+
+    <Label fx:id="statusLabel"/>
+
+    </VBox>
+</AnchorPane>
