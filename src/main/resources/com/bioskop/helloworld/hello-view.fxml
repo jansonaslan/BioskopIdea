@@ -31,7 +31,7 @@
 
     <Label text="BIOSKOPKU"/>
 
-    <TextField fx:id="usernameField"
+    <TextField fx:id="textField"
                promptText="Input Username"/>
 
     <PasswordField fx:id="passwordField"

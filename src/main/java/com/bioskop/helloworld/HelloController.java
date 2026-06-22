@@ -5,14 +5,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
-
-import java.net.URL;
-import java.util.Objects;
+import javafx.scene.image.ImageView;
 
 public class HelloController {
+
+
+    @FXML
+    private ImageView backgroundImage;
 
     @FXML
     private TextField usernameField;
@@ -22,6 +21,16 @@ public class HelloController {
 
     @FXML
     private Label statusLabel;
+
+    @FXML
+    public void initialize() {
+
+        Image image = new Image(
+                getClass().getResource("/Image/BioskopBackground.png").toExternalForm()
+        );
+
+        backgroundImage.setImage(image);
+    }
 
     @FXML
     protected void login() {
