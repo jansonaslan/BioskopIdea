@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloController {
+public class LoginController {
 
     @FXML
     private ImageView backgroundImage;
@@ -34,7 +34,7 @@ public class HelloController {
         Parent root = FXMLLoader.load(
                 getClass().getResource("dashboard.fxml"));
 
-        Stage stage = (Stage)((Node)event.getSource())
+        Stage stage = (Stage) ((Node) event.getSource())
                 .getScene()
                 .getWindow();
 

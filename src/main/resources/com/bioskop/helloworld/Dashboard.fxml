@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            prefWidth="1400"
+            prefHeight="800"
+            style="
+                -fx-background-color: #0f0f0f;">
+<!--Sisi Kiri Ges -->
+
+    <left>
+        <VBox prefWidth="220"
+              spacing="15"
+              style="
+                -fx-background-color: #171717;
+                -fx-padding:20px;">
+
+        <Label text="🎬 CineMax"
+               style="
+                -fx-text-fill: white;
+                -fx-font-size:24px;
+                -fx-font-weight: bold;" />
+
+            <Button text="🏚️ Dashboard"
+                    style="
+                -fx-background-color:#c62828;
+                -fx-text-fill: white;" />
+
+            <Button text="🎟️ Penjualan"
+                    style="
+                -fx-background-color:transparent;
+                -fx-text-fill: white;" />
+
+            <Button text="🍔🥂 Food &amp; drink"
+                    style="
+                -fx-background-color:transparent;
+                -fx-text-fill: white;" />
+
+            <Button text="🎞️ Jadwal Film"
+                    style="
+                -fx-background-color:transparent;
+                -fx-text-fill: white;" />
+
+            <Button text="📃 Laporan Harian"
+                    style="
+                -fx-background-color:transparent;
+                -fx-text-fill: white;" />
+
+            <Button text="🖨️ Cetak Tiket"
+                    style="
+                -fx-background-color:transparent;
+                -fx-text-fill: white;" />
+
+            <Button text="⚙️ Pengaturan"
+                    style="
+                -fx-background-color:transparent;
+                -fx-text-fill: white;" />
+        </VBox>
+    </left>
+
+    <!--isi ne bolo-->
+
+    <center>
+
+        <VBox spacing="20"
+              style="
+                -fx-padding:20;">
+
+            <VBox spacing="5">
+
+                <Label text="Halo Janson"
+                       style="
+                -fx-text-fill: white
+                -fx-font-size-:28;
+                -fx-font-weight-bold;"/>
+
+                <Label text="Selamat Bertugas Hari Ini!!"
+                       style="
+                -fx-text-fill:#bdbdbd;"/>
+
+            </VBox>
+
+            <HBox>
+
+                <VBox prefWidth="180"
+                      spacing="10"
+
+                      style="
+                -fx-background-color:#1f1f1f;
+                -fx-background-radius:15;
+                -fx-padding:15px;">
+
+                    <Label text="🎟️ Tiket Terjual"
+
+                           style="
+                -fx-text-fill:#bdbdbd;"/>
+
+                    <Label text="128"
+                           style="
+                -fx-text-fill:white;
+                -fx-font-size:28px;
+                -fx-font-weight:bold;"/>
+
+                </VBox>
+
+                <VBox prefWidth="180"
+                      spacing="10"
+
+                      style="
+                -fx-background-radius:15;
+                -fx-padding:15px;">
+
+                    <Label text="💰 Pendapatan"
+
+                           style="
+                -fx-text-fill:#bdbdbd;"/>
+
+                    <Label text="Rp 4.250.000"
+
+                           style="
+                -fx-text-fill:white;
+                -fx-font-size:28px;
+                -fx-font-weight:bold;"/>
+
+                </VBox>
+
+        <VBox prefWidth="180"
+              spacing="10"
+              style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
+
+            <Label text="🎬 Film Tayang"
+                   style="-fx-text-fill:#bdbdbd;"/>
+
+            <Label text="8"
+                   style="-fx-text-fill:white; -fx-font-size:28; -fx-font-weight:bold;"/>
+
+        </VBox>
+
+        <VBox prefWidth="180"
+              spacing="10"
+              style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
+
+            <Label text="🏢 Studio Aktif"
+                   style="-fx-text-fill:#bdbdbd;"/>
+
+            <Label text="5"
+                   style="-fx-text-fill:white; -fx-font-size:28; -fx-font-weight:bold;"/>
+
+        </VBox>
+
+    </HBox>
+
+    <!-- PEMILIHAN -->
+    <Label text="Film Sedang Tayang"
+           style="-fx-text-fill:white; -fx-font-size:22; -fx-font-weight:bold;"/>
+
+    <HBox spacing="15">
+
+        <VBox prefWidth="180"
+              spacing="10"
+              style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
+
+            <Label text="Dune Part Two"
+                   style="-fx-text-fill:white; -fx-font-weight:bold;"/>
+
+            <Label text="Sci-Fi"
+                   style="-fx-text-fill:#bdbdbd;"/>
+
+            <Button text="Pilih Film"
+                    style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
+
+        </VBox>
+
+        <VBox prefWidth="180"
+              spacing="10"
+              style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
+
+            <Label text="Inside Out 2"
+                   style="-fx-text-fill:white; -fx-font-weight:bold;"/>
+
+            <Label text="Animation"
+                   style="-fx-text-fill:#bdbdbd;"/>
+
+            <Button text="Pilih Film"
+                    style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
+
+        </VBox>
+
+        <VBox prefWidth="180"
+              spacing="10"
+              style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
+
+            <Label text="Bad Boys"
+                   style="-fx-text-fill:white; -fx-font-weight:bold;"/>
+
+            <Label text="Action"
+                   style="-fx-text-fill:#bdbdbd;"/>
+
+            <Button text="Pilih Film"
+                    style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
+
+        </VBox>
+
+        <VBox prefWidth="180"
+              spacing="10"
+              style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
+
+            <Label text="Mission Impossible"
+                   style="-fx-text-fill:white; -fx-font-weight:bold;"/>
+
+            <Label text="Action"
+                   style="-fx-text-fill:#bdbdbd;"/>
+
+            <Button text="Pilih Film"
+                    style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
+
+        </VBox>
+
+    </HBox>
+
+    <!-- TRANSAKSI -->
+    <Label text="Transaksi Terbaru"
+           style="-fx-text-fill:white; -fx-font-size:22; -fx-font-weight:bold;"/>
+
+    <TableView prefHeight="250">
+
+        <columns>
+
+            <TableColumn text="Invoice" prefWidth="120"/>
+            <TableColumn text="Film" prefWidth="220"/>
+            <TableColumn text="Jumlah Tiket" prefWidth="120"/>
+            <TableColumn text="Total" prefWidth="150"/>
+
+        </columns>
+
+    </TableView>
+
+</VBox>
+
+        </center>
+
+        <!-- RIGHT PANEL -->
+<right>
+
+<VBox prefWidth="300"
+      spacing="20"
+      style="-fx-padding:20;">
+
+    <!-- PROFILE -->
+    <VBox spacing="10"
+          style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
+
+        <Label text="👤 Christian"
+               style="-fx-text-fill:white; -fx-font-size:18; -fx-font-weight:bold;"/>
+
+        <Label text="Role : Kasir"
+               style="-fx-text-fill:#bdbdbd;"/>
+
+        <Label text="Shift : Pagi"
+               style="-fx-text-fill:#bdbdbd;"/>
+
+    </VBox>
+
+    <!-- AKSI COK -->
+    <VBox spacing="10"
+          style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
+
+        <Label text="Quick Action"
+               style="-fx-text-fill:white; -fx-font-size:18; -fx-font-weight:bold;"/>
+
+        <Button text="➕ Transaksi Baru"
+                style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
+
+        <Button text="🎟️ Scan Tiket"
+                style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
+
+        <Button text="🖨️ Cetak Ulang"
+                style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
+
+        <Button text="📋 Riwayat"
+                style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
+
+    </VBox>
+
+    <!-- TOP MOVIE -->
+    <VBox spacing="10"
+          style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
+
+        <Label text="🔥 Film Terlaris Hari Ini"
+               style="-fx-text-fill:white; -fx-font-size:18; -fx-font-weight:bold;"/>
+
+        <Label text="1. Dune Part Two (52 Tiket)"
+               style="-fx-text-fill:white;"/>
+
+        <Label text="2. Bad Boys (40 Tiket)"
+               style="-fx-text-fill:white;"/>
+
+        <Label text="3. Inside Out 2 (27 Tiket)"
+               style="-fx-text-fill:white;"/>
+
+    </VBox>
+
+</VBox>
+
+</right>
+
+        </BorderPane>
+
