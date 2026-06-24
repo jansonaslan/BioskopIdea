@@ -170,6 +170,11 @@
 
             <HBox spacing="15">
 
+
+
+
+
+
                 <!-- Pacific Rim -->
                 <VBox alignment="CENTER"
                       prefWidth="180"
@@ -197,14 +202,20 @@
                             style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
                 </VBox>
 
-            <VBox prefWidth="180"
+
+
+
+
+
+
+            <VBox alignment="CENTER"
+                  prefWidth="180"
                   spacing="10"
-                  style="
-                  -fx-background-color:#1f1f1f;
-                  -fx-background-radius:15;
-                  -fx-padding:15;
-                  -fx-mein-height:320;
-                  -fx-mein-width:320;">
+                  style="-fx-background-color:#1f1f1f;
+                         -fx-background-radius:15;
+                         -fx-padding:15;
+                         -fx-min-height:320;
+                         -fx-max-height:320;">
 
                 <ImageView fx:id="moana1Img"
                            fitWidth="150"
@@ -228,9 +239,20 @@
 
         </VBox>
 
-        <VBox prefWidth="180"
+        <VBox alignment="CENTER"
+              prefWidth="180"
               spacing="10"
-              style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
+              style="-fx-background-color:#1f1f1f;
+                         -fx-background-radius:15;
+                         -fx-padding:15;
+                         -fx-min-height:320;
+                         -fx-max-height:320;">
+
+            <ImageView fx:id="Moana2Img"
+                       fitWidth="150"
+                       fitHeight="180"
+                       preserveRatio="true">
+            </ImageView>
 
             <Label text="Bad Boys"
                    style="-fx-text-fill:white; -fx-font-weight:bold;"/>
@@ -243,6 +265,11 @@
 
         </VBox>
 
+
+
+
+
+
                 <VBox alignment="CENTER"
                       prefWidth="180"
                       spacing="10"
@@ -252,10 +279,11 @@
                              -fx-min-height:320;
                              -fx-max-height:320;">
 
-                    <ImageView fx:id=""
-                               fitWidth="150"
+                    <ImageView fx:id="moana2Img"
+                            fitWidth="150"
                                fitHeight="180"
                                preserveRatio="true">
+                    </ImageView>
 
             <Label text="Moana 2"
                    style="
@@ -272,6 +300,12 @@
                     -fx-text-fill:white;"/>
 
         </VBox>
+
+
+
+
+
+
 
     </HBox>
 

@@ -13,11 +13,28 @@ public class DashboardController {
     private ImageView moana1Img;
 
     @FXML
+    private ImageView moana2Img;
+
+    @FXML
     public void initialize() {
 
-        Image img = new Image(
+        Image pacificRim = new Image(
                 getClass().getResource("/Image/pacificrim.jpg").toExternalForm()
         );
-        pacificRimImg.setImage(img);
+
+        pacificRimImg.setImage(pacificRim);
+
+        Image moana = new Image(
+                getClass().getResource("/Image/moana1.jpeg").toExternalForm()
+        );
+
+        moana1Img.setImage(moana);
+
+        Image moana2 = new Image(
+                getClass().getResource("/Image/Moana2.jpg").toExternalForm()
+        );
+
+        moana2Img.setImage(moana);
+
     }
 }
