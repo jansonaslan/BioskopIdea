@@ -23,10 +23,10 @@
           spacing="10"
           prefWidth="500"
           prefHeight="600"
-          style="-fx-background-color: rgba(20,20,20,0.8);;
+          style="-fx-background-color: rgba(20,20,20,0.8);
                  -fx-background-radius: 30;
                  -fx-padding: 40;
-                 -fx-border-color: rgba(255,255,255,0.2)
+                 -fx-border-color: rgba(255,255,255,0.2);
                  -fx-border-radius: 30;">
 
         <Label text="🎥"

@@ -19,12 +19,9 @@ public class HelloController {
 
     @FXML
     public void initialize() {
-
         Image image = new Image(
-                getClass()
-                        .getResource("/Image/BioskopBackground.png")
-                        .toExternalForm());
-
+                getClass().getResource("/Image/BioskopBackground.png").toExternalForm()
+        );
         backgroundImage.setImage(image);
     }
 
@@ -32,9 +29,10 @@ public class HelloController {
     private void login(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(
-                getClass().getResource("dashboard.fxml"));
+                getClass().getResource("dashboard.fxml")
+        );
 
-        Stage stage = (Stage)((Node)event.getSource())
+        Stage stage = (Stage) ((Node) event.getSource())
                 .getScene()
                 .getWindow();
 

@@ -20,19 +20,21 @@ public class LoginController {
     @FXML
     public void initialize() {
 
-        Image image = new Image(
+        Image bg = new Image(
                 getClass()
                         .getResource("/Image/BioskopBackground.png")
-                        .toExternalForm());
+                        .toExternalForm()
+        );
 
-        backgroundImage.setImage(image);
+        backgroundImage.setImage(bg);
     }
 
     @FXML
     private void login(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(
-                getClass().getResource("dashboard.fxml"));
+                getClass().getResource("dashboard.fxml")
+        );
 
         Stage stage = (Stage) ((Node) event.getSource())
                 .getScene()
