@@ -207,7 +207,7 @@
 
 
 
-
+                <!-- MOANA 1 -->
             <VBox alignment="CENTER"
                   prefWidth="180"
                   spacing="10"
@@ -239,37 +239,41 @@
 
         </VBox>
 
-        <VBox alignment="CENTER"
-              prefWidth="180"
-              spacing="10"
-              style="-fx-background-color:#1f1f1f;
+
+                <!-- INGLORIOUS BASTERDS -->
+                <VBox alignment="CENTER"
+                      prefWidth="180"
+                      spacing="10"
+                      style="-fx-background-color:#1f1f1f;
                          -fx-background-radius:15;
                          -fx-padding:15;
                          -fx-min-height:320;
                          -fx-max-height:320;">
 
-            <ImageView fx:id="Moana2Img"
-                       fitWidth="150"
-                       fitHeight="180"
-                       preserveRatio="true">
-            </ImageView>
+                    <ImageView fx:id="ingloriousImg"
+                               fitWidth="150"
+                               fitHeight="180"
+                               preserveRatio="true">
+                    </ImageView>
 
-            <Label text="Bad Boys"
-                   style="-fx-text-fill:white; -fx-font-weight:bold;"/>
+                    <Label text="Inglorious Basterds"
+                           style="
+                   -fx-text-fill:white;
+                   -fx-font-weight:bold;"/>
 
-            <Label text="Action"
-                   style="-fx-text-fill:#bdbdbd;"/>
+                    <Label text="History"
+                           style="
+                   -fx-text-fill:#bdbdbd;"/>
 
-            <Button text="Pilih Film"
-                    style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
+                    <Button text="Pilih Film"
+                            style="
+                    -fx-background-color:#c62828;
+                    -fx-text-fill:white;"/>
 
-        </VBox>
-
-
-
-
+                </VBox>
 
 
+                <!-- MOANA 2 -->
                 <VBox alignment="CENTER"
                       prefWidth="180"
                       spacing="10"
@@ -300,13 +304,7 @@
                     -fx-text-fill:white;"/>
 
         </VBox>
-
-
-
-
-
-
-
+                
     </HBox>
 
     <!-- TRANSAKSI -->
