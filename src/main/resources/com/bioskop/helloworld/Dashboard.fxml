@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.bioskop.helloworld.DashboardController"
@@ -34,39 +35,46 @@
                 -fx-font-weight: bold;" />
 
             <Button text="🏚️ Dashboard"
+                    onAction="#showDashboard"
                     style="
                 -fx-background-color:#c62828;
-                -fx-text-fill: white;" />
+                -fx-text-fill: white;"/>
 
             <Button text="🎟️ Penjualan"
+                    onAction="#showPenjualan"
                     style="
-                -fx-background-color:transparent;
-                -fx-text-fill: white;" />
+                -fx-background-color:#c62828;
+                -fx-text-fill: white;"/>
 
             <Button text="🍔🥂 Food &amp; drink"
+                    onAction="#showFoodDrink"
                     style="
-                -fx-background-color:transparent;
-                -fx-text-fill: white;" />
+                -fx-background-color:#c62828;
+                -fx-text-fill: white;"/>
 
             <Button text="🎞️ Jadwal Film"
+                    onAction="#showJadwalFilm"
                     style="
-                -fx-background-color:transparent;
-                -fx-text-fill: white;" />
+                -fx-background-color:#c62828;
+                -fx-text-fill: white;"/>
 
             <Button text="📃 Laporan Harian"
+                    onAction="#showLaporan"
                     style="
-                -fx-background-color:transparent;
-                -fx-text-fill: white;" />
+                -fx-background-color:#c62828;
+                -fx-text-fill: white;"/>
 
             <Button text="🖨️ Cetak Tiket"
+                    onAction="#showCetakTiket"
                     style="
-                -fx-background-color:transparent;
-                -fx-text-fill: white;" />
+                -fx-background-color:#c62828;
+                -fx-text-fill: white;"/>
 
             <Button text="⚙️ Pengaturan"
+                    onAction="#showPengaturan"
                     style="
-                -fx-background-color:transparent;
-                -fx-text-fill: white;" />
+                -fx-background-color:#c62828;
+                -fx-text-fill: white;"/>
         </VBox>
     </left>
 
@@ -74,259 +82,11 @@
 
     <center>
 
-        <VBox spacing="20"
-              style="
-                -fx-padding:20;">
+        <AnchorPane fx:id="contentPane"/>
 
-            <VBox spacing="5">
+    </center>
 
-                <Label text="Halo Janson"
-                       style="
-                -fx-text-fill:white;
-                -fx-font-size:28;
-                -fx-font-weight:bold;"/>
 
-                <Label text="Selamat Bertugas Hari Ini!!"
-                       style="
-                -fx-text-fill:#bdbdbd;"/>
-
-            </VBox>
-
-            <HBox>
-
-                <VBox prefWidth="180"
-                      spacing="10"
-
-                      style="
-                -fx-background-color:#1f1f1f;
-                -fx-background-radius:15;
-                -fx-padding:15px;">
-
-                    <Label text="🎟️ Tiket Terjual"
-
-                           style="
-                -fx-text-fill:#bdbdbd;"/>
-
-                    <Label text="128"
-                           style="
-                -fx-text-fill:white;
-                -fx-font-size:28px;
-                -fx-font-weight:bold;"/>
-
-                </VBox>
-
-                <VBox prefWidth="180"
-                      spacing="10"
-
-                      style="
-                -fx-background-radius:15;
-                -fx-padding:15px;">
-
-                    <Label text="💰 Pendapatan"
-                           style="
-                            -fx-text-fill:#bdbdbd;"/>
-
-                    <Label text="Rp 4.250.000"
-
-                           style="
-                -fx-text-fill:white;
-                -fx-font-size:28px;
-                -fx-font-weight:bold;"/>
-
-                </VBox>
-
-        <VBox prefWidth="180"
-              spacing="10"
-              style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
-
-            <Label text="🎬 Film Tayang"
-                   style="-fx-text-fill:#bdbdbd;"/>
-
-            <Label text="8"
-                   style="-fx-text-fill:white; -fx-font-size:28; -fx-font-weight:bold;"/>
-
-        </VBox>
-
-        <VBox prefWidth="180"
-              spacing="10"
-              style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
-
-            <Label text="🏢 Studio Aktif"
-                   style="-fx-text-fill:#bdbdbd;"/>
-
-            <Label text="5"
-                   style="-fx-text-fill:white; -fx-font-size:28; -fx-font-weight:bold;"/>
-
-        </VBox>
-
-    </HBox>
-
-    <!-- PEMILIHAN -->
-    <Label text="Film Sedang Tayang"
-           style="
-           -fx-text-fill:white;
-           -fx-font-size:22;
-           -fx-font-weight:bold;"/>
-
-            <HBox spacing="15">
-
-
-
-
-
-
-                <!-- Pacific Rim -->
-                <VBox alignment="CENTER"
-                      prefWidth="180"
-                      spacing="10"
-                      style="-fx-background-color:#1f1f1f;
-                             -fx-background-radius:15;
-                             -fx-padding:15;
-                             -fx-min-height:320;
-                             -fx-max-height:320;">
-
-                    <ImageView fx:id="pacificRimImg"
-                               fitWidth="150"
-                               fitHeight="180"
-                               preserveRatio="true">
-
-                    </ImageView>
-
-                    <Label text="Pacific Rim"
-                           style="-fx-text-fill:white; -fx-font-weight:bold;"/>
-
-                    <Label text="Sci-Fi"
-                           style="-fx-text-fill:#bdbdbd;"/>
-
-                    <Button text="Pilih Film"
-                            style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
-                </VBox>
-
-
-
-
-
-
-                <!-- MOANA 1 -->
-            <VBox alignment="CENTER"
-                  prefWidth="180"
-                  spacing="10"
-                  style="-fx-background-color:#1f1f1f;
-                         -fx-background-radius:15;
-                         -fx-padding:15;
-                         -fx-min-height:320;
-                         -fx-max-height:320;">
-
-                <ImageView fx:id="moana1Img"
-                           fitWidth="150"
-                           fitHeight="180"
-                           preserveRatio="true">
-                </ImageView>
-
-            <Label text="Moana 1"
-                   style="
-                   -fx-text-fill:white;
-                   -fx-font-weight:bold;"/>
-
-            <Label text="Animation"
-                   style="
-                   -fx-text-fill:#bdbdbd;"/>
-
-            <Button text="Pilih Film"
-                    style="
-                    -fx-background-color:#c62828;
-                    -fx-text-fill:white;"/>
-
-        </VBox>
-
-
-                <!-- INGLORIOUS BASTERDS -->
-                <VBox alignment="CENTER"
-                      prefWidth="180"
-                      spacing="10"
-                      style="-fx-background-color:#1f1f1f;
-                         -fx-background-radius:15;
-                         -fx-padding:15;
-                         -fx-min-height:320;
-                         -fx-max-height:320;">
-
-                    <ImageView fx:id="ingloriousImg"
-                               fitWidth="150"
-                               fitHeight="180"
-                               preserveRatio="true">
-                    </ImageView>
-
-                    <Label text="Inglorious Basterds"
-                           style="
-                   -fx-text-fill:white;
-                   -fx-font-weight:bold;"/>
-
-                    <Label text="History"
-                           style="
-                   -fx-text-fill:#bdbdbd;"/>
-
-                    <Button text="Pilih Film"
-                            style="
-                    -fx-background-color:#c62828;
-                    -fx-text-fill:white;"/>
-
-                </VBox>
-
-
-                <!-- MOANA 2 -->
-                <VBox alignment="CENTER"
-                      prefWidth="180"
-                      spacing="10"
-                      style="-fx-background-color:#1f1f1f;
-                             -fx-background-radius:15;
-                             -fx-padding:15;
-                             -fx-min-height:320;
-                             -fx-max-height:320;">
-
-                    <ImageView fx:id="moana2Img"
-                            fitWidth="150"
-                               fitHeight="180"
-                               preserveRatio="true">
-                    </ImageView>
-
-            <Label text="Moana 2"
-                   style="
-                   -fx-text-fill:white;
-                   -fx-font-weight:bold;"/>
-
-            <Label text="Action"
-                   style="
-                   -fx-text-fill:#bdbdbd;"/>
-
-            <Button text="Pilih Film"
-                    style="
-                    -fx-background-color:#c62828;
-                    -fx-text-fill:white;"/>
-
-        </VBox>
-                
-    </HBox>
-
-    <!-- TRANSAKSI -->
-    <Label text="Transaksi Terbaru"
-           style="-fx-text-fill:white; -fx-font-size:22; -fx-font-weight:bold;"/>
-
-    <TableView prefHeight="250">
-
-        <columns>
-
-            <TableColumn text="Invoice" prefWidth="120"/>
-            <TableColumn text="Film" prefWidth="220"/>
-            <TableColumn text="Jumlah Tiket" prefWidth="120"/>
-            <TableColumn text="Total" prefWidth="150"/>
-
-        </columns>
-
-    </TableView>
-
-</VBox>
-
-        </center>
 
         <!-- RIGHT PANEL -->
 <right>

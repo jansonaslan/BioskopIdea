@@ -1,49 +1,84 @@
 package com.bioskop.helloworld;
 
+import java.util.Objects;
+
 import javafx.fxml.FXML;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
 
 public class DashboardController {
 
     @FXML
-    private ImageView pacificRimImg;
-
-    @FXML
-    private ImageView ingloriousImg;
-
-    @FXML
-    private ImageView moana1Img;
-
-    @FXML
-    private ImageView moana2Img;
+    private AnchorPane contentPane;
 
     @FXML
     public void initialize() {
+        loadPage("DashboardHome.fxml");
+    }
 
-        Image pacificRim = new Image(
-                getClass().getResource("/Image/pacificrim.jpg").toExternalForm()
-        );
+    private void loadPage(String fxml) {
 
-        pacificRimImg.setImage(pacificRim);
+        System.out.println("Mencari file: " + fxml);
+        System.out.println("Lokasi: " + getClass().getResource(fxml));
 
-        Image moana1 = new Image(
-                getClass().getResource("/Image/moana1.jpeg").toExternalForm()
-        );
+        try {
 
-        moana1Img.setImage(moana1);
+            Parent page = FXMLLoader.load(
+                    Objects.requireNonNull(getClass().getResource(fxml))
+            );
 
-        Image inglorious= new Image(
-                getClass().getResource("/Image/inglorious.jpg").toExternalForm()
-        );
+            contentPane.getChildren().setAll(page);
 
-        ingloriousImg.setImage(inglorious);
+            AnchorPane.setTopAnchor(page, 0.0);
+            AnchorPane.setBottomAnchor(page, 0.0);
+            AnchorPane.setLeftAnchor(page, 0.0);
+            AnchorPane.setRightAnchor(page, 0.0);
 
-        Image moana2 = new Image(
-                getClass().getResource("/Image/Moana2.jpg").toExternalForm()
-        );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-        moana2Img.setImage(moana2);
+    @FXML
+    private void showDashboard() {
+        System.out.println("Dashboard diklik");
+        loadPage("DashboardHome.fxml");
+    }
 
+    @FXML
+    private void showPenjualan() {
+        System.out.println("Penjualan diklik");
+        loadPage("HalamanPenjualan.fxml");
+    }
+
+    @FXML
+    private void showFoodDrink() {
+        System.out.println("Food & Drink diklik");
+        loadPage("Makanan dan Minuman.fxml");
+    }
+
+    @FXML
+    private void showJadwalFilm() {
+        System.out.println("Jadwal Film diklik");
+        loadPage("JadwalFilm.fxml");
+    }
+
+    @FXML
+    private void showLaporan() {
+        System.out.println("Laporan diklik");
+        loadPage("LaporanHarian.fxml");
+    }
+
+    @FXML
+    private void showCetakTiket() {
+        System.out.println("Cetak Tiket diklik");
+        loadPage("CetakTiket.fxml");
+    }
+
+    @FXML
+    private void showPengaturan() {
+        System.out.println("Pengaturan diklik");
+        loadPage("Pengaturan.fxml");
     }
 }
