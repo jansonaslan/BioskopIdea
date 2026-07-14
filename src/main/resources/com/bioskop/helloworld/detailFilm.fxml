@@ -1,14 +1,318 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<?import javafx.scene.control.ToggleGroup?>
+<BorderPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+            fx:controller="com.bioskop.helloworld.DetailFilmController"
+            stylesheets="@Detail.css"
+            style="-fx-background-color:#111111;">
 
-</AnchorPane>
+
+    <ToggleButton fx:id="tgl1"
+                  onAction="#pilihTanggal"/>
+
+    <ToggleButton fx:id="tgl2"
+                  onAction="#pilihTanggal"/>
+
+    <ToggleButton fx:id="tgl3"
+                  onAction="#pilihTanggal"/>
+
+    <ToggleButton fx:id="tgl4"
+                  onAction="#pilihTanggal"/>
+
+    <!-- HEADER -->
+
+    <top>
+        <HBox alignment="CENTER_LEFT"
+              spacing="20"
+              style="-fx-background-color:#1f1f1f;
+                     -fx-padding:15;">
+
+            <Button fx:id="btnKembali"
+                    text="← Kembali"
+                    onAction="#kembali"
+                    style="-fx-background-color:#444;
+               -fx-text-fill:white;
+               -fx-font-size:15;
+               -fx-cursor:hand;"/>
+
+            <Label text="DETAIL FILM"
+                   style="-fx-font-size:28;
+                          -fx-font-weight:bold;
+                          -fx-text-fill:white;"/>
+        </HBox>
+    </top>
+
+    <!-- CONTENT -->
+
+    <center>
+
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background:#111111;
+                           -fx-background-color:#111111;">
+
+            <content>
+
+                <fx:define>
+
+                    <ToggleGroup fx:id="tanggalGroup"/>
+                    <ToggleGroup fx:id="studioGroup"/>
+                    <ToggleGroup fx:id="jamGroup"/>
+
+                </fx:define>
+
+                <VBox spacing="25"
+                      style="-fx-background-color:#111111;">
+
+                    <padding>
+                        <Insets top="25" right="25" bottom="25" left="25"/>
+                    </padding>
+
+                    <!-- CARD FILM -->
+
+                    <HBox spacing="30"
+                          style="-fx-background-color:#1f1f1f;
+                                 -fx-background-radius:15;
+                                 -fx-padding:20;
+                                 -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.45),15,0,0,5);">
+
+                        <!-- POSTER -->
+
+                        <ImageView fx:id="posterImage"
+                                   fitWidth="260"
+                                   fitHeight="380"
+                                   preserveRatio="true"/>
+
+                        <!-- INFORMASI -->
+
+                        <VBox spacing="15">
+
+                            <Label fx:id="judulLabel"
+                                   text="Judul Film"
+                                   style="-fx-font-size:30;
+                                          -fx-font-weight:bold;
+                                          -fx-text-fill:white;"/>
+
+                            <HBox spacing="10">
+
+                                <Label text="Rating"
+                                       style="-fx-text-fill:white;
+                                              -fx-font-size:18;"/>
+
+                                <Label text="SU"
+                                       style="-fx-background-color:#43a047;
+                                              -fx-background-radius:8;
+                                              -fx-padding:4 12;
+                                              -fx-text-fill:white;
+                                              -fx-font-weight:bold;"/>
+
+                            </HBox>
+
+                            <Label fx:id="genreLabel"
+                                   text="Genre"
+                                   style="-fx-text-fill:#d0d0d0;
+                                          -fx-font-size:18;"/>
+
+                            <Label fx:id="durasiLabel"
+                                   text="Durasi"
+                                   style="-fx-text-fill:#d0d0d0;
+                                          -fx-font-size:18;"/>
+
+                            <Label fx:id="tahunLabel"
+                                   text="Tahun"
+                                   style="-fx-text-fill:#d0d0d0;
+                                          -fx-font-size:18;"/>
+
+                            <Label fx:id="sutradaraLabel"
+                                   text="Sutradara"
+                                   style="-fx-text-fill:#d0d0d0;
+                                          -fx-font-size:18;"/>
+
+                            <Label fx:id="hargaLabel"
+                                   text="Harga"
+                                   style="-fx-text-fill:#d0d0d0;
+                                          -fx-font-size:18;"/>
+
+                            <Separator prefWidth="500"/>
+
+                            <Label text="SINOPSIS"
+                                   style="-fx-font-size:20;
+                                          -fx-font-weight:bold;
+                                          -fx-text-fill:white;"/>
+
+                            <TextArea fx:id="sinopsisArea"
+                                      editable="false"
+                                      wrapText="true"
+                                      prefWidth="520"
+                                      prefHeight="150"
+                                      style="-fx-control-inner-background:#2b2b2b;
+                                             -fx-text-fill:white;
+                                             -fx-font-size:14;
+                                             -fx-background-radius:10;"/>
+
+                        </VBox>
+
+                    </HBox>
+
+                    <!-- JADWAL -->
+
+                    <VBox spacing="15"
+                          style="-fx-background-color:#1f1f1f;
+                                 -fx-background-radius:15;
+                                 -fx-padding:20;
+                                 -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.35),10,0,0,4);">
+
+                        <Label text="PILIH JADWAL"
+                               style="-fx-font-size:22;
+                                      -fx-font-weight:bold;
+                                      -fx-text-fill:white;"/>
+
+                        <VBox spacing="18">
+
+                            <!-- TANGGAL -->
+
+                            <Label text="Tanggal"
+                                   style="-fx-text-fill:white;
+                  -fx-font-size:18;
+                  -fx-font-weight:bold;"/>
+
+                            <HBox spacing="10">
+
+                                <ToggleButton
+                                        text="Sab&#10;12 Jul"
+                                        toggleGroup="$tanggalGroup"
+                                        onAction="#pilihTanggal"
+                                        styleClass="date-button"/>
+
+                                <ToggleButton
+                                        text="Sab&#10;13 Jul"
+                                        toggleGroup="$tanggalGroup"
+                                        onAction="#pilihTanggal"
+                                        styleClass="date-button"/>
+
+                                <ToggleButton
+                                        text="Sab&#10;14 Jul"
+                                        toggleGroup="$tanggalGroup"
+                                        onAction="#pilihTanggal"
+                                        styleClass="date-button"/>
+
+                                <ToggleButton
+                                        text="Sab&#10;15 Jul"
+                                        toggleGroup="$tanggalGroup"
+                                        onAction="#pilihTanggal"
+                                        styleClass="date-button"/>
+
+                            </HBox>
+
+                            <!-- STUDIO -->
+
+                            <Label text="Studio"
+                                   style="-fx-text-fill:white;
+                  -fx-font-size:18;
+                  -fx-font-weight:bold;"/>
+
+                            <HBox spacing="12">
+
+                                <ToggleButton
+                                        text="Studio 1"
+                                        toggleGroup="$studioGroup"
+                                        onAction="#pilihStudio"
+                                        styleClass="choice-button"/>
+
+                                <ToggleButton
+                                        text="Studio 2"
+                                        toggleGroup="$studioGroup"
+                                        onAction="#pilihStudio"
+                                        styleClass="choice-button"/>
+
+                                <ToggleButton
+                                        text="Studio 3"
+                                        toggleGroup="$studioGroup"
+                                        onAction="#pilihStudio"
+                                        styleClass="choice-button"/>
+
+                            </HBox>
+
+                            <!-- JAM -->
+
+                            <Label text="Jam Tayang"
+                                   style="-fx-text-fill:white;
+                                          -fx-font-size:18;
+                                          -fx-font-weight:bold;"/>
+
+                            <FlowPane hgap="12"
+                                      vgap="12">
+
+                                <ToggleButton
+                                        text="10.00"
+                                        toggleGroup="$jamGroup"
+                                        onAction="#pilihJam"
+                                        styleClass="choice-button"/>
+
+                                <ToggleButton
+                                        text="12.30"
+                                        toggleGroup="$jamGroup"
+                                        onAction="#pilihJam"
+                                        styleClass="choice-button"/>
+
+                                <ToggleButton
+                                        text="17.30"
+                                        toggleGroup="$jamGroup"
+                                        onAction="#pilihJam"
+                                        styleClass="choice-button"/>
+
+                                <ToggleButton
+                                        text="20.00"
+                                        toggleGroup="$jamGroup"
+                                        onAction="#pilihJam"
+                                        styleClass="choice-button"/>
+
+                                <ToggleButton
+                                        text="22.30"
+                                        toggleGroup="$jamGroup"
+                                        onAction="#pilihJam"
+                                        styleClass="choice-button"/>
+
+                            </FlowPane>
+
+                        </VBox>
+
+                    </VBox>
+
+                    <!-- BUTTON -->
+
+                    <Button
+                            fx:id="btnPilihKursi"
+                            text="PILIH KURSI"
+                            onAction="#pilihKursi"
+                            prefHeight="60"
+                            maxWidth="Infinity"
+                            style="-fx-background-color:#d32f2f;
+                                   -fx-text-fill:white;
+                                   -fx-font-size:20;
+                                   -fx-font-weight:bold;
+                                   -fx-background-radius:12;
+                                   -fx-cursor:hand;"/>
+
+                </VBox>
+
+            </content>
+
+        </ScrollPane>
+
+    </center>
+
+</BorderPane>

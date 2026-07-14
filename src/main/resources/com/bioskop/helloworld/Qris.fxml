@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.bioskop.helloworld.QrisController"
+            stylesheets="@Pembayaran.css">
+
+    <!-- ================= HEADER ================= -->
+
+    <top>
+
+        <HBox alignment="CENTER_LEFT"
+              spacing="20"
+              styleClass="header">
+
+            <Label text="PEMBAYARAN QRIS"
+                   styleClass="header-title"/>
+
+        </HBox>
+
+    </top>
+
+    <!-- ================= CONTENT ================= -->
+
+    <center>
+
+        <StackPane alignment="CENTER"
+                   style="-fx-padding:30;">
+
+            <!-- ================================================= -->
+            <!-- PANEL QRIS                                        -->
+            <!-- ================================================= -->
+
+            <VBox fx:id="qrisPane"
+                  alignment="CENTER"
+                  spacing="20"
+                  prefWidth="650"
+                  maxWidth="650"
+                  styleClass="card">
+
+                <Label text="Silakan Scan QRIS di bawah ini"
+                       styleClass="section-title"/>
+
+                <ImageView fx:id="qrisImage"
+                           fitWidth="260"
+                           fitHeight="260"
+                           preserveRatio="true"/>
+
+                <HBox alignment="CENTER_LEFT"
+                      prefWidth="500">
+
+                    <Label text="Total Pembayaran"
+                           styleClass="normal-label"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label fx:id="totalLabel"
+                           text="Rp0"
+                           styleClass="total-price"/>
+
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT"
+                      prefWidth="500">
+
+                    <Label text="Status"
+                           styleClass="normal-label"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label fx:id="statusLabel"
+                           text="Menunggu Pembayaran"
+                           style="-fx-font-size:18;
+                                  -fx-font-weight:bold;
+                                  -fx-text-fill:#F39C12;"/>
+
+                </HBox>
+
+                <Label text="QR akan diverifikasi secara otomatis setelah pembayaran berhasil."
+                       wrapText="true"
+                       alignment="CENTER"
+                       style="-fx-text-fill:gray;
+                              -fx-font-size:13;"/>
+
+            </VBox>
+
+            <!-- ================================================= -->
+            <!-- PANEL BERHASIL                                    -->
+            <!-- ================================================= -->
+
+            <VBox fx:id="successPane"
+                  alignment="CENTER"
+                  spacing="18"
+                  visible="false"
+                  managed="false"
+                  prefWidth="650"
+                  maxWidth="650"
+                  styleClass="card">
+
+                <Label text="✔"
+                       style="-fx-font-size:100;
+                              -fx-text-fill:#2E7D32;"/>
+
+                <Label text="PEMBAYARAN BERHASIL"
+                       style="-fx-font-size:30;
+                              -fx-font-weight:bold;
+                              -fx-text-fill:#2E7D32;"/>
+
+                <Label text="Terima kasih telah melakukan pembayaran."
+                       style="-fx-font-size:17;"/>
+
+                <Label text="E-ticket akan segera ditampilkan..."
+                       style="-fx-text-fill:gray;
+                              -fx-font-size:14;"/>
+
+            </VBox>
+
+        </StackPane>
+
+    </center>
+
+</BorderPane>

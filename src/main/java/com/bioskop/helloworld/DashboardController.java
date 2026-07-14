@@ -1,84 +1,138 @@
 package com.bioskop.helloworld;
 
-import java.util.Objects;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Objects;
+import java.util.Optional;
 
 public class DashboardController {
+
+    // Agar dapat dipanggil dari controller lain
+    private static DashboardController instance;
 
     @FXML
     private AnchorPane contentPane;
 
     @FXML
     public void initialize() {
+        instance = this;
+
+        // Halaman pertama
         loadPage("DashboardHome.fxml");
     }
 
-    private void loadPage(String fxml) {
+    public static DashboardController getInstance() {
+        return instance;
+    }
 
-        System.out.println("Mencari file: " + fxml);
-        System.out.println("Lokasi: " + getClass().getResource(fxml));
+    /**
+     * Memuat halaman ke dalam contentPane
+     */
+    public void loadPage(String fxml) {
 
         try {
 
-            Parent page = FXMLLoader.load(
+            FXMLLoader loader = new FXMLLoader(
                     Objects.requireNonNull(getClass().getResource(fxml))
             );
 
-            contentPane.getChildren().setAll(page);
+            Parent page = loader.load();
+
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add(page);
 
             AnchorPane.setTopAnchor(page, 0.0);
             AnchorPane.setBottomAnchor(page, 0.0);
             AnchorPane.setLeftAnchor(page, 0.0);
             AnchorPane.setRightAnchor(page, 0.0);
 
-        } catch (Exception e) {
+        } catch (IOException e) {
+
             e.printStackTrace();
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Halaman gagal dimuat");
+            alert.setContentText("Tidak dapat membuka file : " + fxml);
+            alert.showAndWait();
         }
     }
 
+    /**
+     * Menu Dashboard
+     */
     @FXML
     private void showDashboard() {
-        System.out.println("Dashboard diklik");
         loadPage("DashboardHome.fxml");
     }
 
-    @FXML
-    private void showPenjualan() {
-        System.out.println("Penjualan diklik");
-        loadPage("HalamanPenjualan.fxml");
-    }
-
-    @FXML
-    private void showFoodDrink() {
-        System.out.println("Food & Drink diklik");
-        loadPage("Makanan dan Minuman.fxml");
-    }
-
-    @FXML
-    private void showJadwalFilm() {
-        System.out.println("Jadwal Film diklik");
-        loadPage("JadwalFilm.fxml");
-    }
-
-    @FXML
-    private void showLaporan() {
-        System.out.println("Laporan diklik");
-        loadPage("LaporanHarian.fxml");
-    }
-
-    @FXML
-    private void showCetakTiket() {
-        System.out.println("Cetak Tiket diklik");
-        loadPage("CetakTiket.fxml");
-    }
-
+    /**
+     * Menu Pengaturan
+     */
     @FXML
     private void showPengaturan() {
-        System.out.println("Pengaturan diklik");
         loadPage("Pengaturan.fxml");
+    }
+
+    /**
+     * Logout
+     */
+    @FXML
+    private void logout() {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Logout");
+        alert.setHeaderText("Konfirmasi Logout");
+        alert.setContentText("Apakah Anda yakin ingin logout?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+
+            try {
+
+                FXMLLoader loader = new FXMLLoader(
+                        Objects.requireNonNull(
+                                getClass().getResource("hello-view.fxml"))
+                );
+
+                Parent root = loader.load();
+
+                Stage stage = (Stage) contentPane.getScene().getWindow();
+
+                // Simpan ukuran window sebelum ganti scene
+                double width = stage.getWidth();
+                double height = stage.getHeight();
+                boolean maximized = stage.isMaximized();
+
+                Scene loginScene = new Scene(root, width, height);
+
+                stage.setScene(loginScene);
+                stage.setTitle("CineMax");
+
+                // Kembalikan kondisi fullscreen jika sebelumnya fullscreen
+                stage.setMaximized(maximized);
+
+                stage.centerOnScreen();
+                stage.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+
+                Alert error = new Alert(Alert.AlertType.ERROR);
+                error.setTitle("Error");
+                error.setHeaderText("Logout gagal");
+                error.setContentText("Tidak dapat membuka halaman login.");
+                error.showAndWait();
+            }
+        }
     }
 }

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.bioskop.helloworld.StrukController"
+            stylesheets="@Struk.css">
+
+    <!-- ================= HEADER ================= -->
+
+    <top>
+
+        <HBox spacing="20"
+              alignment="CENTER_LEFT"
+              styleClass="header">
+
+            <Label text="STRUK PEMBAYARAN"
+                   styleClass="header-title"/>
+
+        </HBox>
+
+    </top>
+
+    <!-- ================= CONTENT ================= -->
+
+    <center>
+
+        <ScrollPane fitToWidth="true">
+
+            <content>
+
+                <VBox alignment="TOP_CENTER"
+                      spacing="25"
+                      style="-fx-padding:25;">
+
+                    <!-- CARD -->
+
+                    <VBox spacing="18"
+                          prefWidth="700"
+                          styleClass="card">
+
+                        <Label text="CINEMAX"
+                               styleClass="cinema-title"/>
+
+                        <Label text="BUKTI PEMBAYARAN"
+                               styleClass="section-title"/>
+
+                        <Separator/>
+
+                        <HBox>
+
+                            <Label text="No Transaksi"
+                                   styleClass="normal-label"/>
+
+                            <Region HBox.hgrow="ALWAYS"/>
+
+                            <Label fx:id="transaksiLabel"
+                                   text="-"
+                                   styleClass="info-label"/>
+
+                        </HBox>
+
+                        <HBox>
+
+                            <Label text="Tanggal"
+                                   styleClass="normal-label"/>
+
+                            <Region HBox.hgrow="ALWAYS"/>
+
+                            <Label fx:id="tanggalLabel"
+                                   text="-"
+                                   styleClass="info-label"/>
+
+                        </HBox>
+
+                        <HBox>
+
+                            <Label text="Metode"
+                                   styleClass="normal-label"/>
+
+                            <Region HBox.hgrow="ALWAYS"/>
+
+                            <Label fx:id="metodeLabel"
+                                   text="-"
+                                   styleClass="info-label"/>
+
+                        </HBox>
+
+                        <Separator/>
+
+                        <ImageView fx:id="posterImage"
+                                   fitWidth="180"
+                                   fitHeight="250"
+                                   preserveRatio="true"/>
+
+                        <HBox>
+
+                            <Label text="Film"
+                                   styleClass="normal-label"/>
+
+                            <Region HBox.hgrow="ALWAYS"/>
+
+                            <Label fx:id="filmLabel"
+                                   text="-"
+                                   styleClass="info-label"/>
+
+                        </HBox>
+
+                        <HBox>
+
+                            <Label text="Studio"
+                                   styleClass="normal-label"/>
+
+                            <Region HBox.hgrow="ALWAYS"/>
+
+                            <Label fx:id="studioLabel"
+                                   text="-"
+                                   styleClass="info-label"/>
+
+                        </HBox>
+
+                        <HBox>
+
+                            <Label text="Jam"
+                                   styleClass="normal-label"/>
+
+                            <Region HBox.hgrow="ALWAYS"/>
+
+                            <Label fx:id="jamLabel"
+                                   text="-"
+                                   styleClass="info-label"/>
+
+                        </HBox>
+                        <HBox>
+
+                            <Label text="Kursi"
+                                   styleClass="normal-label"/>
+
+                            <Region HBox.hgrow="ALWAYS"/>
+
+                            <Label fx:id="kursiLabel"
+                                   text="-"
+                                   styleClass="info-label"/>
+
+                        </HBox>
+
+                        <Separator/>
+
+                        <HBox>
+
+                            <Label text="Jumlah Tiket"
+                                   styleClass="normal-label"/>
+
+                            <Region HBox.hgrow="ALWAYS"/>
+
+                            <Label fx:id="jumlahLabel"
+                                   text="0"
+                                   styleClass="info-label"/>
+
+                        </HBox>
+
+                        <HBox>
+
+                            <Label text="Harga Tiket"
+                                   styleClass="normal-label"/>
+
+                            <Region HBox.hgrow="ALWAYS"/>
+
+                            <Label fx:id="hargaLabel"
+                                   text="Rp0"
+                                   styleClass="info-label"/>
+
+                        </HBox>
+
+                        <HBox>
+
+                            <Label text="Biaya Admin"
+                                   styleClass="normal-label"/>
+
+                            <Region HBox.hgrow="ALWAYS"/>
+
+                            <Label fx:id="adminLabel"
+                                   text="Rp0"
+                                   styleClass="info-label"/>
+
+                        </HBox>
+
+                        <Separator/>
+
+                        <HBox>
+
+                            <Label text="TOTAL"
+                                   styleClass="section-title"/>
+
+                            <Region HBox.hgrow="ALWAYS"/>
+
+                            <Label fx:id="totalLabel"
+                                   text="Rp0"
+                                   styleClass="total-price"/>
+
+                        </HBox>
+
+                    </VBox>
+
+                    <!-- TOMBOL -->
+
+                    <VBox spacing="15"
+                          alignment="CENTER">
+
+                        <Button fx:id="btnCetakStruk"
+                                text="CETAK STRUK"
+                                prefWidth="300"
+                                prefHeight="45"
+                                onAction="#cetakStruk"
+                                styleClass="print-button"/>
+
+                        <Button fx:id="btnCetakTiket"
+                                text="CETAK TIKET"
+                                prefWidth="300"
+                                prefHeight="45"
+                                onAction="#cetakTiket"
+                                styleClass="ticket-button"/>
+
+                        <Button fx:id="btnSelesai"
+                                text="SELESAI"
+                                prefWidth="300"
+                                prefHeight="45"
+                                onAction="#selesai"
+                                styleClass="finish-button"/>
+
+                    </VBox>
+
+                </VBox>
+
+            </content>
+
+        </ScrollPane>
+
+    </center>
+
+</BorderPane>

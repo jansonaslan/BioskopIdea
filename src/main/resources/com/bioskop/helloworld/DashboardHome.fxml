@@ -3,115 +3,41 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 
 <ScrollPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
+            fx:id="scrollPane"
             fx:controller="com.bioskop.helloworld.DashboardHomeController"
             fitToWidth="true"
+            fitToHeight="true"
+            pannable="true"
+            hbarPolicy="NEVER"
+            vbarPolicy="AS_NEEDED"
             style="-fx-background:#0f0f0f;
                    -fx-background-color:#0f0f0f;">
 
     <content>
 
         <VBox spacing="20"
-              style="-fx-padding:20; -fx-background-color:#0f0f0f;">
+              fillWidth="true"
+              style="-fx-padding:20;
+                     -fx-background-color:#0f0f0f;">
 
-            <!-- HEADER -->
-            <VBox spacing="5">
-
-                <Label text="Halo Janson"
-                       style="-fx-text-fill:white;
-                              -fx-font-size:28;
-                              -fx-font-weight:bold;"/>
-
-                <Label text="Selamat Bertugas Hari Ini!!"
-                       style="-fx-text-fill:#bdbdbd;"/>
-
-            </VBox>
-
-            <!-- KARTU STATISTIK -->
-            <HBox spacing="15">
-
-                <VBox prefWidth="180"
-                      spacing="10"
-                      style="-fx-background-color:#1f1f1f;
-                             -fx-background-radius:15;
-                             -fx-padding:15;">
-
-                    <Label text="🎟️ Tiket Terjual"
-                           style="-fx-text-fill:#bdbdbd;"/>
-
-                    <Label text="128"
-                           style="-fx-text-fill:white;
-                                  -fx-font-size:28;
-                                  -fx-font-weight:bold;"/>
-
-                </VBox>
-
-                <VBox prefWidth="180"
-                      spacing="10"
-                      style="-fx-background-color:#1f1f1f;
-                             -fx-background-radius:15;
-                             -fx-padding:15;">
-
-                    <Label text="💰 Pendapatan"
-                           style="-fx-text-fill:#bdbdbd;"/>
-
-                    <Label text="Rp 4.250.000"
-                           style="-fx-text-fill:white;
-                                  -fx-font-size:28;
-                                  -fx-font-weight:bold;"/>
-
-                </VBox>
-
-                <VBox prefWidth="180"
-                      spacing="10"
-                      style="-fx-background-color:#1f1f1f;
-                             -fx-background-radius:15;
-                             -fx-padding:15;">
-
-                    <Label text="🎬 Film Tayang"
-                           style="-fx-text-fill:#bdbdbd;"/>
-
-                    <Label text="8"
-                           style="-fx-text-fill:white;
-                                  -fx-font-size:28;
-                                  -fx-font-weight:bold;"/>
-
-                </VBox>
-
-                <VBox prefWidth="180"
-                      spacing="10"
-                      style="-fx-background-color:#1f1f1f;
-                             -fx-background-radius:15;
-                             -fx-padding:15;">
-
-                    <Label text="🏢 Studio Aktif"
-                           style="-fx-text-fill:#bdbdbd;"/>
-
-                    <Label text="5"
-                           style="-fx-text-fill:white;
-                                  -fx-font-size:28;
-                                  -fx-font-weight:bold;"/>
-
-                </VBox>
-
-            </HBox>
-
-            <!-- FILM -->
             <Label text="Film Sedang Tayang"
                    style="-fx-text-fill:white;
-                          -fx-font-size:22;
+                          -fx-font-size:30;
                           -fx-font-weight:bold;"/>
 
-            <HBox spacing="15">
+            <FlowPane fx:id="filmPane"
+                      hgap="20"
+                      vgap="20"
+                      prefWrapLength="1200">
 
-                <!-- FILM 1 -->
+                <!-- ================= PACIFIC RIM ================= -->
+
                 <VBox alignment="CENTER"
                       prefWidth="180"
                       spacing="10"
@@ -120,24 +46,28 @@
                              -fx-padding:15;">
 
                     <ImageView fx:id="pacificRimImg"
-                                fitWidth="150"
-                               fitHeight="180"
+                               fitWidth="160"
+                               fitHeight="230"
                                preserveRatio="true"/>
 
                     <Label text="Pacific Rim"
                            style="-fx-text-fill:white;
+                                  -fx-font-size:18;
                                   -fx-font-weight:bold;"/>
 
                     <Label text="Sci-Fi"
                            style="-fx-text-fill:#bdbdbd;"/>
 
                     <Button text="Pilih Film"
+                            onAction="#pilihpacificrim"
+                            prefWidth="120"
                             style="-fx-background-color:#c62828;
                                    -fx-text-fill:white;"/>
 
                 </VBox>
 
-                <!-- FILM 2 -->
+                <!-- ================= MOANA ================= -->
+
                 <VBox alignment="CENTER"
                       prefWidth="180"
                       spacing="10"
@@ -146,24 +76,28 @@
                              -fx-padding:15;">
 
                     <ImageView fx:id="moana1Img"
-                                fitWidth="150"
-                               fitHeight="180"
+                               fitWidth="160"
+                               fitHeight="230"
                                preserveRatio="true"/>
 
                     <Label text="Moana 1"
                            style="-fx-text-fill:white;
+                                  -fx-font-size:18;
                                   -fx-font-weight:bold;"/>
 
                     <Label text="Animation"
                            style="-fx-text-fill:#bdbdbd;"/>
 
                     <Button text="Pilih Film"
+                            onAction="#pilihMoana1"
+                            prefWidth="120"
                             style="-fx-background-color:#c62828;
                                    -fx-text-fill:white;"/>
 
                 </VBox>
 
-                <!-- FILM 3 -->
+                <!-- ================= INGLOURIOUS ================= -->
+
                 <VBox alignment="CENTER"
                       prefWidth="180"
                       spacing="10"
@@ -172,24 +106,28 @@
                              -fx-padding:15;">
 
                     <ImageView fx:id="ingloriousImg"
-                                fitWidth="150"
-                               fitHeight="180"
+                               fitWidth="160"
+                               fitHeight="230"
                                preserveRatio="true"/>
 
                     <Label text="Inglorious Basterds"
                            style="-fx-text-fill:white;
+                                  -fx-font-size:18;
                                   -fx-font-weight:bold;"/>
 
                     <Label text="History"
                            style="-fx-text-fill:#bdbdbd;"/>
 
                     <Button text="Pilih Film"
+                            onAction="#pilihinglorious"
+                            prefWidth="120"
                             style="-fx-background-color:#c62828;
                                    -fx-text-fill:white;"/>
 
                 </VBox>
 
-                <!-- FILM 4 -->
+                <!-- ================= MOANA 2 ================= -->
+
                 <VBox alignment="CENTER"
                       prefWidth="180"
                       spacing="10"
@@ -198,50 +136,267 @@
                              -fx-padding:15;">
 
                     <ImageView fx:id="Moana2Img"
-                                fitWidth="150"
-                               fitHeight="180"
+                               fitWidth="160"
+                               fitHeight="230"
                                preserveRatio="true"/>
 
                     <Label text="Moana 2"
                            style="-fx-text-fill:white;
+                                  -fx-font-size:18;
                                   -fx-font-weight:bold;"/>
 
                     <Label text="Action"
                            style="-fx-text-fill:#bdbdbd;"/>
 
                     <Button text="Pilih Film"
+                            onAction="#pilihMoana2"
+                            prefWidth="120"
                             style="-fx-background-color:#c62828;
                                    -fx-text-fill:white;"/>
 
                 </VBox>
 
-            </HBox>
+                <!-- ================= UP ================= -->
 
-            <!-- TRANSAKSI -->
-            <Label text="Transaksi Terbaru"
-                   style="-fx-text-fill:white;
-                          -fx-font-size:22;
-                          -fx-font-weight:bold;"/>
+                <VBox alignment="CENTER"
+                      prefWidth="180"
+                      spacing="10"
+                      style="-fx-background-color:#1f1f1f;
+                             -fx-background-radius:15;
+                             -fx-padding:15;">
 
-            <TableView prefHeight="250">
+                    <ImageView fx:id="upImg"
+                               fitWidth="160"
+                               fitHeight="230"
+                               preserveRatio="true"/>
 
-                <columns>
+                    <Label text="UP"
+                           style="-fx-text-fill:white;
+                                  -fx-font-size:18;
+                                  -fx-font-weight:bold;"/>
 
-                    <TableColumn text="Invoice"
-                                 prefWidth="120"/>
+                    <Label text="Adventure"
+                           style="-fx-text-fill:#bdbdbd;"/>
 
-                    <TableColumn text="Film"
-                                 prefWidth="220"/>
+                    <Button text="Pilih Film"
+                            onAction="#pilihup"
+                            prefWidth="120"
+                            style="-fx-background-color:#c62828;
+                                   -fx-text-fill:white;"/>
 
-                    <TableColumn text="Jumlah Tiket"
-                                 prefWidth="120"/>
+                </VBox>
 
-                    <TableColumn text="Total"
-                                 prefWidth="150"/>
+                <!-- ================= CARS ================= -->
 
-                </columns>
+                <VBox alignment="CENTER"
+                      prefWidth="180"
+                      spacing="10"
+                      style="-fx-background-color:#1f1f1f;
+                             -fx-background-radius:15;
+                             -fx-padding:15;">
 
-            </TableView>
+                    <ImageView fx:id="carsImg"
+                               fitWidth="160"
+                               fitHeight="230"
+                               preserveRatio="true"/>
+
+                    <Label text="Cars"
+                           style="-fx-text-fill:white;
+                                  -fx-font-size:18;
+                                  -fx-font-weight:bold;"/>
+
+                    <Label text="Animation"
+                           style="-fx-text-fill:#bdbdbd;"/>
+
+                    <Button text="Pilih Film"
+                            onAction="#pilihcars"
+                            prefWidth="120"
+                            style="-fx-background-color:#c62828;
+                                   -fx-text-fill:white;"/>
+
+                </VBox>
+
+                <!-- ================= TOY STORY ================= -->
+
+                <VBox alignment="CENTER"
+                      prefWidth="180"
+                      spacing="10"
+                      style="-fx-background-color:#1f1f1f;
+                             -fx-background-radius:15;
+                             -fx-padding:15;">
+
+                    <ImageView fx:id="toyStoryImg"
+                               fitWidth="160"
+                               fitHeight="230"
+                               preserveRatio="true"/>
+
+                    <Label text="Toy Story"
+                           style="-fx-text-fill:white;
+                                  -fx-font-size:18;
+                                  -fx-font-weight:bold;"/>
+
+                    <Label text="Animation"
+                           style="-fx-text-fill:#bdbdbd;"/>
+
+                    <Button text="Pilih Film"
+                            onAction="#pilihtoyStory"
+                            prefWidth="120"
+                            style="-fx-background-color:#c62828;
+                                   -fx-text-fill:white;"/>
+
+                </VBox>
+
+                <!-- ================= TANGLED ================= -->
+
+                <VBox alignment="CENTER"
+                      prefWidth="180"
+                      spacing="10"
+                      style="-fx-background-color:#1f1f1f;
+             -fx-background-radius:15;
+             -fx-padding:15;">
+
+                    <ImageView fx:id="tangledImg"
+                               fitWidth="160"
+                               fitHeight="230"
+                               preserveRatio="true"/>
+
+                    <Label text="Tangled"
+                           style="-fx-text-fill:white;
+                  -fx-font-size:18;
+                  -fx-font-weight:bold;"/>
+
+                    <Label text="Animation"
+                           style="-fx-text-fill:#bdbdbd;"/>
+
+                    <Button text="Pilih Film"
+                            onAction="#pilihtangled"
+                            prefWidth="120"
+                            style="-fx-background-color:#c62828;
+                   -fx-text-fill:white;"/>
+
+                </VBox>
+
+                <!-- ================= FROZEN 1 ================= -->
+
+                <VBox alignment="CENTER"
+                      prefWidth="180"
+                      spacing="10"
+                      style="-fx-background-color:#1f1f1f;
+             -fx-background-radius:15;
+             -fx-padding:15;">
+
+                    <ImageView fx:id="frozen1Img"
+                               fitWidth="160"
+                               fitHeight="230"
+                               preserveRatio="true"/>
+
+                    <Label text="Frozen"
+                           style="-fx-text-fill:white;
+                  -fx-font-size:18;
+                  -fx-font-weight:bold;"/>
+
+                    <Label text="Animation"
+                           style="-fx-text-fill:#bdbdbd;"/>
+
+                    <Button text="Pilih Film"
+                            onAction="#pilihfrozen1"
+                            prefWidth="120"
+                            style="-fx-background-color:#c62828;
+                   -fx-text-fill:white;"/>
+
+                </VBox>
+
+                <!-- ================= FROZEN 2 ================= -->
+
+                <VBox alignment="CENTER"
+                      prefWidth="180"
+                      spacing="10"
+                      style="-fx-background-color:#1f1f1f;
+             -fx-background-radius:15;
+             -fx-padding:15;">
+
+                    <ImageView fx:id="frozen2Img"
+                               fitWidth="160"
+                               fitHeight="230"
+                               preserveRatio="true"/>
+
+                    <Label text="Frozen II"
+                           style="-fx-text-fill:white;
+                  -fx-font-size:18;
+                  -fx-font-weight:bold;"/>
+
+                    <Label text="Animation"
+                           style="-fx-text-fill:#bdbdbd;"/>
+
+                    <Button text="Pilih Film"
+                            onAction="#pilihfrozen2"
+                            prefWidth="120"
+                            style="-fx-background-color:#c62828;
+                   -fx-text-fill:white;"/>
+
+                </VBox>
+
+                <!-- ================= BRAVE ================= -->
+
+                <VBox alignment="CENTER"
+                      prefWidth="180"
+                      spacing="10"
+                      style="-fx-background-color:#1f1f1f;
+             -fx-background-radius:15;
+             -fx-padding:15;">
+
+                    <ImageView fx:id="braveImg"
+                               fitWidth="160"
+                               fitHeight="230"
+                               preserveRatio="true"/>
+
+                    <Label text="Brave"
+                           style="-fx-text-fill:white;
+                  -fx-font-size:18;
+                  -fx-font-weight:bold;"/>
+
+                    <Label text="Adventure"
+                           style="-fx-text-fill:#bdbdbd;"/>
+
+                    <Button text="Pilih Film"
+                            onAction="#pilihbrave"
+                            prefWidth="120"
+                            style="-fx-background-color:#c62828;
+                   -fx-text-fill:white;"/>
+
+                </VBox>
+
+                <!-- ================= BIG HERO 6 ================= -->
+
+                <VBox alignment="CENTER"
+                      prefWidth="180"
+                      spacing="10"
+                      style="-fx-background-color:#1f1f1f;
+             -fx-background-radius:15;
+             -fx-padding:15;">
+
+                    <ImageView fx:id="bigHeroImg"
+                               fitWidth="160"
+                               fitHeight="230"
+                               preserveRatio="true"/>
+
+                    <Label text="Big Hero 6"
+                           style="-fx-text-fill:white;
+                  -fx-font-size:18;
+                  -fx-font-weight:bold;"/>
+
+                    <Label text="Animation"
+                           style="-fx-text-fill:#bdbdbd;"/>
+
+                    <Button text="Pilih Film"
+                            onAction="#pilihbigHero"
+                            prefWidth="120"
+                            style="-fx-background-color:#c62828;
+                   -fx-text-fill:white;"/>
+
+                </VBox>
+
+            </FlowPane>
 
         </VBox>
 

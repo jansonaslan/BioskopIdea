@@ -8,12 +8,26 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
-        stage.setTitle("Hello Guys!");
+
+        FXMLLoader loader = new FXMLLoader(
+                HelloApplication.class.getResource("hello-view.fxml")
+        );
+
+        Scene scene = new Scene(loader.load());
+
+        stage.setTitle("CineMax");
         stage.setScene(scene);
+
+        // Membuka aplikasi dalam keadaan maksimal
+        stage.setMaximized(true);
+
         stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
     }
 }

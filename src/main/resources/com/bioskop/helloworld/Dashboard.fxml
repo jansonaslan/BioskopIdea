@@ -1,157 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.bioskop.helloworld.DashboardController"
-            prefWidth="1400"
-            prefHeight="800"
-            style="
-                -fx-background-color: #0f0f0f;">
-<!--Sisi Kiri Ges -->
+            style="-fx-background-color:#0f0f0f;">
 
-    <left>
-        <VBox prefWidth="220"
+    <!-- ================= HEADER ================= -->
+
+    <top>
+
+        <HBox alignment="CENTER_LEFT"
               spacing="15"
-              style="
-                -fx-background-color: #171717;
-                -fx-padding:20px;">
+              style="-fx-background-color:#171717;
+                     -fx-padding:15 25 15 25;">
 
-        <Label text="🎬 CineMax"
-               style="
-                -fx-text-fill: white;
-                -fx-font-size:24px;
-                -fx-font-weight: bold;" />
+            <!-- Logo -->
+            <Label text="🎬 CineMax"
+                   style="-fx-text-fill:white;
+                          -fx-font-size:28;
+                          -fx-font-weight:bold;"/>
 
-            <Button text="🏚️ Dashboard"
-                    onAction="#showDashboard"
-                    style="
-                -fx-background-color:#c62828;
-                -fx-text-fill: white;"/>
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
 
-            <Button text="🎟️ Penjualan"
-                    onAction="#showPenjualan"
-                    style="
-                -fx-background-color:#c62828;
-                -fx-text-fill: white;"/>
+            <!-- Nama -->
+            <Label text="👤 Christian"
+                   style="-fx-text-fill:white;
+                          -fx-font-size:17;
+                          -fx-font-weight:bold;"/>
 
-            <Button text="🍔🥂 Food &amp; drink"
-                    onAction="#showFoodDrink"
-                    style="
-                -fx-background-color:#c62828;
-                -fx-text-fill: white;"/>
-
-            <Button text="🎞️ Jadwal Film"
-                    onAction="#showJadwalFilm"
-                    style="
-                -fx-background-color:#c62828;
-                -fx-text-fill: white;"/>
-
-            <Button text="📃 Laporan Harian"
-                    onAction="#showLaporan"
-                    style="
-                -fx-background-color:#c62828;
-                -fx-text-fill: white;"/>
-
-            <Button text="🖨️ Cetak Tiket"
-                    onAction="#showCetakTiket"
-                    style="
-                -fx-background-color:#c62828;
-                -fx-text-fill: white;"/>
-
-            <Button text="⚙️ Pengaturan"
+            <!-- Pengaturan -->
+            <Button text="⚙ Pengaturan"
                     onAction="#showPengaturan"
-                    style="
-                -fx-background-color:#c62828;
-                -fx-text-fill: white;"/>
-        </VBox>
-    </left>
+                    prefWidth="150"
+                    prefHeight="42"
+                    style="-fx-background-color:#2d2d2d;
+                           -fx-text-fill:white;
+                           -fx-font-weight:bold;
+                           -fx-background-radius:10;
+                           -fx-cursor:hand;"/>
 
-    <!--isi ne bolo-->
+            <!-- Logout -->
+            <Button text="⏻ Logout"
+                    onAction="#logout"
+                    prefWidth="140"
+                    prefHeight="42"
+                    style="-fx-background-color:#d32f2f;
+                           -fx-text-fill:white;
+                           -fx-font-weight:bold;
+                           -fx-background-radius:10;
+                           -fx-cursor:hand;"/>
+
+        </HBox>
+
+    </top>
+
+    <!-- ================= CONTENT ================= -->
 
     <center>
 
-        <AnchorPane fx:id="contentPane"/>
+        <AnchorPane fx:id="contentPane"
+                    style="-fx-background-color:#0f0f0f;"/>
 
     </center>
 
-
-
-        <!-- RIGHT PANEL -->
-<right>
-
-<VBox prefWidth="300"
-      spacing="20"
-      style="-fx-padding:20;">
-
-    <!-- PROFILE -->
-    <VBox spacing="10"
-          style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
-
-        <Label text="👤 Christian"
-               style="-fx-text-fill:white; -fx-font-size:18; -fx-font-weight:bold;"/>
-
-        <Label text="Role : Kasir"
-               style="-fx-text-fill:#bdbdbd;"/>
-
-        <Label text="Shift : Pagi"
-               style="-fx-text-fill:#bdbdbd;"/>
-
-    </VBox>
-
-    <!-- AKSI COK -->
-    <VBox spacing="10"
-          style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
-
-        <Label text="Quick Action"
-               style="-fx-text-fill:white; -fx-font-size:18; -fx-font-weight:bold;"/>
-
-        <Button text="➕ Transaksi Baru"
-                style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
-
-        <Button text="🎟️ Scan Tiket"
-                style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
-
-        <Button text="🖨️ Cetak Ulang"
-                style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
-
-        <Button text="📋 Riwayat"
-                style="-fx-background-color:#c62828; -fx-text-fill:white;"/>
-
-    </VBox>
-
-    <!-- TOP MOVIE -->
-    <VBox spacing="10"
-          style="-fx-background-color:#1f1f1f; -fx-background-radius:15; -fx-padding:15;">
-
-        <Label text="🔥 Film Terlaris Hari Ini"
-               style="-fx-text-fill:white; -fx-font-size:18; -fx-font-weight:bold;"/>
-
-        <Label text="1. Dune Part Two (52 Tiket)"
-               style="-fx-text-fill:white;"/>
-
-        <Label text="2. Bad Boys (40 Tiket)"
-               style="-fx-text-fill:white;"/>
-
-        <Label text="3. Inside Out 2 (27 Tiket)"
-               style="-fx-text-fill:white;"/>
-
-    </VBox>
-
-</VBox>
-
-</right>
-
-        </BorderPane>
-
+</BorderPane>
