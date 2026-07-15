@@ -192,25 +192,25 @@
                             <HBox spacing="10">
 
                                 <ToggleButton
-                                        text="Sab&#10;12 Jul"
+                                        text="Selasa,14 Jul"
                                         toggleGroup="$tanggalGroup"
                                         onAction="#pilihTanggal"
                                         styleClass="date-button"/>
 
                                 <ToggleButton
-                                        text="Sab&#10;13 Jul"
+                                        text="Rabu,15 Jul"
                                         toggleGroup="$tanggalGroup"
                                         onAction="#pilihTanggal"
                                         styleClass="date-button"/>
 
                                 <ToggleButton
-                                        text="Sab&#10;14 Jul"
+                                        text="Kamis,16 Jul"
                                         toggleGroup="$tanggalGroup"
                                         onAction="#pilihTanggal"
                                         styleClass="date-button"/>
 
                                 <ToggleButton
-                                        text="Sab&#10;15 Jul"
+                                        text="Jumat,17 Jul"
                                         toggleGroup="$tanggalGroup"
                                         onAction="#pilihTanggal"
                                         styleClass="date-button"/>

@@ -1,6 +1,8 @@
 package com.bioskop.helloworld;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -36,34 +38,115 @@ public class DashboardHomeController {
         loadImage(frozen2Img, "/Image/frozen2.jpg");
         loadImage(braveImg, "/Image/brave.jpg");
         loadImage(bigHeroImg, "/Image/bigHero.jpg");
+
     }
 
     private void loadImage(ImageView imageView, String path) {
 
-        if (imageView == null) {
-            System.out.println("ImageView belum terhubung untuk : " + path);
-            return;
-        }
+        if (imageView == null) return;
 
         var stream = getClass().getResourceAsStream(path);
 
-        if (stream == null) {
-            System.out.println("Gambar tidak ditemukan : " + path);
-            return;
+        if (stream != null) {
+            imageView.setImage(new Image(stream));
         }
 
-        imageView.setImage(new Image(stream));
     }
+
+    // =====================================================
+    // Membuka halaman detail film
+    // =====================================================
+
+    private void openFilm(String judul,
+                          String genre,
+                          String durasi,
+                          String tahun,
+                          String sutradara,
+                          String harga,
+                          String sinopsis,
+                          String posterPath) {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    Objects.requireNonNull(
+                            getClass().getResource("detailFilm.fxml"))
+            );
+
+            Parent root = loader.load();
+
+            DetailFilmController controller = loader.getController();
+
+            controller.setFilm(
+                    judul,
+                    genre,
+                    durasi,
+                    tahun,
+                    sutradara,
+                    harga,
+                    sinopsis,
+                    new Image(
+                            Objects.requireNonNull(
+                                    getClass().getResourceAsStream(posterPath)
+                            )
+                    )
+            );
+
+            DashboardController.getInstance().setContent(root);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    // =====================================================
+    // PACIFIC RIM
+    // =====================================================
 
     @FXML
     private void pilihpacificrim() {
-        DashboardController.getInstance().loadPage("detailFilm.fxml");
+
+        openFilm(
+                "Pacific Rim",
+                "Action, Sci-Fi",
+                "2 Jam 11 Menit",
+                "2013",
+                "Guillermo del Toro",
+                "Rp35000",
+                "Ketika makhluk raksasa bernama Kaiju muncul dari sebuah celah antardimensi di dasar Samudra Pasifik, umat manusia berada di ambang kepunahan. Untuk melawan ancaman tersebut, berbagai negara bekerja sama menciptakan robot raksasa yang disebut Jaeger, yang dikendalikan oleh dua pilot melalui koneksi saraf yang disebut Drift.\n" +
+                        "\n" +
+                        "Mantan pilot Jaeger, Raleigh Becket, yang pensiun setelah kehilangan saudaranya dalam pertempuran, dipanggil kembali untuk bergabung dalam misi terakhir melawan para Kaiju. Ia dipasangkan dengan Mako Mori, seorang pilot muda yang memiliki tekad kuat untuk membalas dendam atas kehancuran yang disebabkan Kaiju.\n" +
+                        "\n" +
+                        "Bersama tim Jaeger dari berbagai negara, mereka harus menghadapi serangan Kaiju yang semakin kuat dan berusaha menutup portal tempat para monster itu berasal. Misi tersebut menjadi harapan terakhir umat manusia untuk menyelamatkan dunia dari kehancuran.",
+                "/Image/pacificrim.jpg"
+        );
+
     }
+
+    // =====================================================
+    // MOANA 1
+    // =====================================================
 
     @FXML
     private void pilihMoana1() {
-        DashboardController.getInstance().loadPage("detailFilm.fxml");
+
+        openFilm(
+                "Moana",
+                "Animation, Adventure",
+                "1 Jam 47 Menit",
+                "2016",
+                "Ron Clements",
+                "Rp35000",
+                "Moana berlayar melintasi lautan untuk menyelamatkan desanya bersama Maui.",
+                "/Image/moana1.jpeg"
+        );
+
     }
+
+    // =====================================================
+    // FILM LAIN
+    // =====================================================
 
     @FXML
     private void pilihinglorious() {

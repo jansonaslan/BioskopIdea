@@ -17,6 +17,17 @@ public class DashboardController {
 
     // Agar dapat dipanggil dari controller lain
     private static DashboardController instance;
+    public void setContent(Parent page) {
+
+        contentPane.getChildren().clear();
+        contentPane.getChildren().add(page);
+
+        AnchorPane.setTopAnchor(page, 0.0);
+        AnchorPane.setBottomAnchor(page, 0.0);
+        AnchorPane.setLeftAnchor(page, 0.0);
+        AnchorPane.setRightAnchor(page, 0.0);
+
+    }
 
     @FXML
     private AnchorPane contentPane;

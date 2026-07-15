@@ -2,11 +2,11 @@ package com.bioskop.helloworld;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.print.PrinterJob;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+
 
 import java.net.URL;
 import java.text.NumberFormat;
@@ -51,6 +51,27 @@ public class StrukController implements Initializable {
     @FXML
     private Label totalLabel;
 
+    @FXML
+    private VBox receiptRoot;
+
+    @FXML
+    private Label kodeBookingLabel;
+
+    @FXML
+    private Label filmTicketLabel;
+
+    @FXML
+    private Label studioTicketLabel;
+
+    @FXML
+    private Label tanggalTicketLabel;
+
+    @FXML
+    private Label jamTicketLabel;
+
+    @FXML
+    private Label kursiTicketLabel;
+
     private final int biayaAdmin = 2500;
 
     @Override
@@ -94,6 +115,18 @@ public class StrukController implements Initializable {
 
         totalLabel.setText(rupiah.format(total));
 
+        kodeBookingLabel.setText(BookingData.nomorTransaksi);
+
+        filmTicketLabel.setText(BookingData.judulFilm);
+
+        studioTicketLabel.setText(BookingData.studio);
+
+        tanggalTicketLabel.setText(BookingData.tanggal);
+
+        jamTicketLabel.setText(BookingData.jam);
+
+        kursiTicketLabel.setText(String.join(", ", BookingData.kursi));
+
         if (BookingData.posterFilm != null) {
             posterImage.setImage(BookingData.posterFilm);
         }
@@ -104,14 +137,16 @@ public class StrukController implements Initializable {
     // =====================================================
 
     @FXML
-    private void cetakStruk() {
+    private void cetakStruk(){
 
-        printNode(totalLabel.getScene().getRoot());
+        ThermalPrinter printer = new ThermalPrinter();
+
+        printer.printReceipt();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Cetak");
         alert.setHeaderText(null);
-        alert.setContentText("Struk berhasil dicetak.");
+        alert.setContentText("Struk berhasil dikirim ke printer.");
         alert.showAndWait();
 
     }
@@ -120,12 +155,6 @@ public class StrukController implements Initializable {
     // CETAK TIKET
     // =====================================================
 
-    @FXML
-    private void cetakTiket() {
-
-        DashboardController.getInstance().loadPage("Tiket.fxml");
-
-    }
 
     // =====================================================
     // SELESAI
@@ -147,33 +176,4 @@ public class StrukController implements Initializable {
         DashboardController.getInstance().loadPage("DashboardHome.fxml");
 
     }
-
-    // =====================================================
-    // PRINT NODE
-    // =====================================================
-
-    private void printNode(Node node) {
-
-        PrinterJob job = PrinterJob.createPrinterJob();
-
-        if (job != null) {
-
-            boolean lanjut = job.showPrintDialog(node.getScene().getWindow());
-
-            if (lanjut) {
-
-                boolean sukses = job.printPage(node);
-
-                if (sukses) {
-
-                    job.endJob();
-
-                }
-
-            }
-
-        }
-
-    }
-
 }

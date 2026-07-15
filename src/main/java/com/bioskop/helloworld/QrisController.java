@@ -1,15 +1,26 @@
 package com.bioskop.helloworld;
 
+import com.bioskop.helloworld.api.ApiClient;
+import com.bioskop.helloworld.dto.PaymentRequest;
+import com.bioskop.helloworld.dto.PaymentResponse;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -34,15 +45,20 @@ public class QrisController implements Initializable {
 
     private final int biayaAdmin = 2500;
 
+    private final ApiClient apiClient = new ApiClient();
+
+    private String orderId;
+
+    private Timeline pollingTimeline;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // ===============================
-        // HITUNG TOTAL PEMBAYARAN
-        // ===============================
+        int subtotal =
+                BookingData.hargaTiket * BookingData.kursi.size();
 
-        int subtotal = BookingData.hargaTiket * BookingData.kursi.size();
-        int total = subtotal + biayaAdmin;
+        int total =
+                subtotal + biayaAdmin;
 
         NumberFormat rupiah =
                 NumberFormat.getCurrencyInstance(
@@ -52,83 +68,153 @@ public class QrisController implements Initializable {
 
         statusLabel.setText("Menunggu Pembayaran");
 
-        // ===============================
-        // TAMPILKAN QRIS
-        // ===============================
-
         try {
 
-            Image image = new Image(
-                    getClass().getResourceAsStream("/Image/qris.png"));
+            PaymentRequest request = new PaymentRequest();
 
-            qrisImage.setImage(image);
+            request.setOrderId("INV-" + System.currentTimeMillis());
+
+            request.setAmount(total);
+
+            PaymentResponse response =
+                    apiClient.createQris(request);
+
+            orderId = response.getOrderId();
+
+            // Menampilkan QR dari qrString
+            tampilkanQr(response.getQrString());
+
+            BookingData.metodePembayaran = "QRIS";
+            BookingData.biayaAdmin = biayaAdmin;
+            BookingData.nomorTransaksi =
+                    response.getTransactionId();
+
+            startPolling();
 
         } catch (Exception e) {
 
-            System.out.println("Gagal memuat gambar QRIS.");
+            e.printStackTrace();
+
+            statusLabel.setText("Gagal Membuat QRIS");
 
         }
 
-        // ===============================
-        // SIMULASI PEMBAYARAN
-        // ===============================
-
-        simulasiPembayaran();
     }
 
-    // =====================================
-    // SIMULASI PEMBAYARAN BERHASIL
-    // =====================================
+    private void tampilkanQr(String qrString) {
 
-    private void simulasiPembayaran() {
+        try {
 
-        PauseTransition tunggu =
-                new PauseTransition(Duration.seconds(5));
+            BitMatrix matrix =
+                    new MultiFormatWriter().encode(
+                            qrString,
+                            BarcodeFormat.QR_CODE,
+                            300,
+                            300);
 
-        tunggu.setOnFinished(event -> {
+            BufferedImage image =
+                    new BufferedImage(
+                            300,
+                            300,
+                            BufferedImage.TYPE_INT_RGB);
 
-            // Status berubah
-            statusLabel.setText("Pembayaran Berhasil");
+            for (int x = 0; x < 300; x++) {
 
-            // Sembunyikan QR
-            qrisPane.setVisible(false);
-            qrisPane.setManaged(false);
+                for (int y = 0; y < 300; y++) {
 
-            // Tampilkan halaman sukses
-            successPane.setVisible(true);
-            successPane.setManaged(true);
+                    image.setRGB(
+                            x,
+                            y,
+                            matrix.get(x, y)
+                                    ? 0xFF000000
+                                    : 0xFFFFFFFF);
 
-            // Simpan data pembayaran
-            BookingData.metodePembayaran = "QRIS";
-            BookingData.biayaAdmin = biayaAdmin;
+                }
 
-            BookingData.nomorTransaksi =
-                    "CMX-" + (100000 + (int) (Math.random() * 900000));
+            }
 
-            // Tunggu 2 detik
-            PauseTransition selesai =
-                    new PauseTransition(Duration.seconds(2));
+            qrisImage.setImage(
+                    SwingFXUtils.toFXImage(image, null));
 
-            selesai.setOnFinished(e -> {
+        } catch (Exception e) {
 
-                // Tutup popup QRIS
-                Stage stage =
-                        (Stage) successPane.getScene().getWindow();
+            e.printStackTrace();
 
-                stage.close();
+            statusLabel.setText("QRIS gagal ditampilkan");
 
-                // Buka halaman Struk
-                DashboardController
-                        .getInstance()
-                        .loadPage("Struk.fxml");
+        }
 
-            });
+    }
 
-            selesai.play();
+    private void startPolling() {
+
+        pollingTimeline = new Timeline(
+
+                new KeyFrame(Duration.seconds(3), event -> {
+
+                    new Thread(() -> {
+
+                        try {
+
+                            String status =
+                                    apiClient.checkStatus(orderId);
+
+                            System.out.println("Status Midtrans : " + status);
+
+                            if ("settlement".equalsIgnoreCase(status)
+                                    || "capture".equalsIgnoreCase(status)) {
+
+                                pollingTimeline.stop();
+
+                                Platform.runLater(this::showSuccess);
+
+                            }
+
+                        } catch (Exception e) {
+
+                            e.printStackTrace();
+
+                        }
+
+                    }).start();
+
+                })
+
+        );
+
+        pollingTimeline.setCycleCount(Animation.INDEFINITE);
+
+        pollingTimeline.play();
+
+    }
+
+    private void showSuccess() {
+
+        statusLabel.setText("Pembayaran Berhasil");
+
+        qrisPane.setVisible(false);
+        qrisPane.setManaged(false);
+
+        successPane.setVisible(true);
+        successPane.setManaged(true);
+
+        PauseTransition selesai =
+                new PauseTransition(Duration.seconds(2));
+
+        selesai.setOnFinished(event -> {
+
+            Stage stage =
+                    (Stage) successPane.getScene().getWindow();
+
+            stage.close();
+
+            DashboardController
+                    .getInstance()
+                    .loadPage("Struk.fxml");
 
         });
 
-        tunggu.play();
+        selesai.play();
 
     }
 

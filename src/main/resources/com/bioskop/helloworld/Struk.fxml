@@ -45,8 +45,9 @@
 
                     <!-- CARD -->
 
-                    <VBox spacing="18"
-                          prefWidth="700"
+                    <VBox fx:id="receiptRoot"
+                          spacing="18"
+                          prefWidth="200"
                           styleClass="card">
 
                         <Label text="CINEMAX"
@@ -99,8 +100,8 @@
                         <Separator/>
 
                         <ImageView fx:id="posterImage"
-                                   fitWidth="180"
-                                   fitHeight="250"
+                                   fitWidth="120"
+                                   fitHeight="170"
                                    preserveRatio="true"/>
 
                         <HBox>
@@ -210,6 +211,70 @@
 
                         </HBox>
 
+                        <Separator/>
+
+                        <Label text="TIKET MASUK"
+                               styleClass="section-title"/>
+
+                        <HBox>
+                            <Label text="Kode Booking"
+                                   styleClass="normal-label"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label fx:id="kodeBookingLabel"
+                                   text="-"
+                                   styleClass="info-label"/>
+                        </HBox>
+
+                        <HBox>
+                            <Label text="Film"
+                                   styleClass="normal-label"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label fx:id="filmTicketLabel"
+                                   text="-"
+                                   styleClass="info-label"/>
+                        </HBox>
+
+                        <HBox>
+                            <Label text="Studio"
+                                   styleClass="normal-label"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label fx:id="studioTicketLabel"
+                                   text="-"
+                                   styleClass="info-label"/>
+                        </HBox>
+
+                        <HBox>
+                            <Label text="Tanggal"
+                                   styleClass="normal-label"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label fx:id="tanggalTicketLabel"
+                                   text="-"
+                                   styleClass="info-label"/>
+                        </HBox>
+
+                        <HBox>
+                            <Label text="Jam"
+                                   styleClass="normal-label"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label fx:id="jamTicketLabel"
+                                   text="-"
+                                   styleClass="info-label"/>
+                        </HBox>
+
+                        <HBox>
+                            <Label text="Kursi"
+                                   styleClass="normal-label"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label fx:id="kursiTicketLabel"
+                                   text="-"
+                                   styleClass="info-label"/>
+                        </HBox>
+
+                        <Separator/>
+
+                        <Label text="SELAMAT MENONTON"
+                               styleClass="section-title"/>
+
                     </VBox>
 
                     <!-- TOMBOL -->
@@ -223,13 +288,6 @@
                                 prefHeight="45"
                                 onAction="#cetakStruk"
                                 styleClass="print-button"/>
-
-                        <Button fx:id="btnCetakTiket"
-                                text="CETAK TIKET"
-                                prefWidth="300"
-                                prefHeight="45"
-                                onAction="#cetakTiket"
-                                styleClass="ticket-button"/>
 
                         <Button fx:id="btnSelesai"
                                 text="SELESAI"
