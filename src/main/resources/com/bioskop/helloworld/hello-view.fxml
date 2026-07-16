@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 
 <StackPane xmlns:fx="http://javafx.com/fxml"
-           fx:controller="com.bioskop.helloworld.HelloController">
+           fx:controller="com.bioskop.helloworld.LoginController">
 
     <!-- Background -->
     <ImageView fx:id="backgroundImage"
@@ -39,12 +39,12 @@
                style="-fx-font-size:18;
                       -fx-text-fill:white;"/>
 
-        <TextField fx:id="usernameField"
+        <TextField fx:id="txtUsername"
                    promptText="Username"
                    prefWidth="350"
                    prefHeight="45"/>
 
-        <PasswordField fx:id="passwordField"
+        <PasswordField fx:id="txtPassword"
                        promptText="Password"
                        prefWidth="350"
                        prefHeight="45"/>

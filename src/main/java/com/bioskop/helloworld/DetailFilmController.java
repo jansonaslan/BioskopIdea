@@ -9,6 +9,8 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -110,7 +112,7 @@ public class DetailFilmController {
                         String durasi,
                         String tahun,
                         String sutradara,
-                        String harga,
+                        int harga,
                         String sinopsis,
                         Image poster) {
 
@@ -119,7 +121,11 @@ public class DetailFilmController {
         durasiLabel.setText("Durasi : " + durasi);
         tahunLabel.setText("Tahun : " + tahun);
         sutradaraLabel.setText("Sutradara : " + sutradara);
-        hargaLabel.setText("Harga : " + harga);
+        NumberFormat rupiah =
+                NumberFormat.getCurrencyInstance(
+                        new Locale("id","ID"));
+
+        hargaLabel.setText("Harga : " + rupiah.format(harga));
         sinopsisArea.setText(sinopsis);
 
         posterImage.setImage(poster);
@@ -131,21 +137,7 @@ public class DetailFilmController {
         BookingData.judulFilm = judul;
         BookingData.posterFilm = poster;
 
-        try {
-
-            String angka = harga
-                    .replace("Rp", "")
-                    .replace(".", "")
-                    .replace(",", "")
-                    .replace(" ", "");
-
-            BookingData.hargaTiket = Integer.parseInt(angka);
-
-        } catch (Exception e) {
-
-            BookingData.hargaTiket = 35000;
-
-        }
+        BookingData.hargaTiket = harga;
 
     }
     // =====================================================

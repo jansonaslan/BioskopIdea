@@ -29,7 +29,7 @@ public class HelloController {
     private void login(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(
-                getClass().getResource("dashboard.fxml")
+                getClass().getResource("Dashboard.fxml")
         );
 
         Stage stage = (Stage) ((Node) event.getSource())

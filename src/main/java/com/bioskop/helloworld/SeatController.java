@@ -12,6 +12,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static com.bioskop.helloworld.BookingData.hargaTiket;
+
 public class SeatController {
 
     @FXML
@@ -32,8 +34,6 @@ public class SeatController {
     // Daftar kursi yang dipilih
     private final List<ToggleButton> selectedSeats = new ArrayList<>();
 
-    // Harga tiket per kursi
-    private final int hargaTiket = 35000;
 
     // Daftar kursi yang sudah terisi
     private final Set<String> bookedSeats = new HashSet<>();
@@ -157,7 +157,7 @@ public class SeatController {
         }
 
         // Simpan harga tiket
-        BookingData.hargaTiket = hargaTiket;
+        hargaTiket = hargaTiket;
 
         System.out.println("===== KURSI DIPILIH =====");
 
@@ -168,7 +168,7 @@ public class SeatController {
         System.out.println("------------------------");
         System.out.println("Jumlah : " + BookingData.kursi.size());
         System.out.println("Total  : Rp " +
-                (BookingData.kursi.size() * BookingData.hargaTiket));
+                (BookingData.kursi.size() * hargaTiket));
 
         // Pindah ke halaman pembayaran
         DashboardController.getInstance().loadPage("Pembayaran.fxml");

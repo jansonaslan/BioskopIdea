@@ -5,7 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -17,6 +19,45 @@ public class DashboardController {
 
     // Agar dapat dipanggil dari controller lain
     private static DashboardController instance;
+
+    @FXML
+    private AnchorPane contentPane;
+
+    @FXML
+    private Button btnPengaturan;
+
+    @FXML
+    private Label lblUser;
+
+    @FXML
+    public void initialize() {
+
+        instance = this;
+
+        // Menampilkan username yang sedang login
+        if (lblUser != null) {
+            lblUser.setText("👤 " + Session.username);
+        }
+
+        // Jika login sebagai kasir, sembunyikan menu pengaturan
+        if ("kasir".equals(Session.role)) {
+            if (btnPengaturan != null) {
+                btnPengaturan.setVisible(false);
+                btnPengaturan.setManaged(false);
+            }
+        }
+
+        // Halaman pertama
+        loadPage("DashboardHome.fxml");
+    }
+
+    public static DashboardController getInstance() {
+        return instance;
+    }
+
+    /**
+     * Digunakan controller lain untuk mengganti isi contentPane
+     */
     public void setContent(Parent page) {
 
         contentPane.getChildren().clear();
@@ -26,22 +67,6 @@ public class DashboardController {
         AnchorPane.setBottomAnchor(page, 0.0);
         AnchorPane.setLeftAnchor(page, 0.0);
         AnchorPane.setRightAnchor(page, 0.0);
-
-    }
-
-    @FXML
-    private AnchorPane contentPane;
-
-    @FXML
-    public void initialize() {
-        instance = this;
-
-        // Halaman pertama
-        loadPage("DashboardHome.fxml");
-    }
-
-    public static DashboardController getInstance() {
-        return instance;
     }
 
     /**
@@ -72,7 +97,7 @@ public class DashboardController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Halaman gagal dimuat");
-            alert.setContentText("Tidak dapat membuka file : " + fxml);
+            alert.setContentText("Tidak dapat membuka file: " + fxml);
             alert.showAndWait();
         }
     }
@@ -108,39 +133,39 @@ public class DashboardController {
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
 
+            // Hapus session
+            Session.username = "";
+            Session.role = "";
+
             try {
 
                 FXMLLoader loader = new FXMLLoader(
-                        Objects.requireNonNull(
-                                getClass().getResource("hello-view.fxml"))
+                        Objects.requireNonNull(getClass().getResource("hello-view.fxml"))
                 );
 
                 Parent root = loader.load();
 
                 Stage stage = (Stage) contentPane.getScene().getWindow();
 
-                // Simpan ukuran window sebelum ganti scene
                 double width = stage.getWidth();
                 double height = stage.getHeight();
                 boolean maximized = stage.isMaximized();
 
-                Scene loginScene = new Scene(root, width, height);
+                Scene scene = new Scene(root, width, height);
 
-                stage.setScene(loginScene);
+                stage.setScene(scene);
                 stage.setTitle("CineMax");
-
-                // Kembalikan kondisi fullscreen jika sebelumnya fullscreen
                 stage.setMaximized(maximized);
-
                 stage.centerOnScreen();
                 stage.show();
 
             } catch (IOException e) {
+
                 e.printStackTrace();
 
                 Alert error = new Alert(Alert.AlertType.ERROR);
                 error.setTitle("Error");
-                error.setHeaderText("Logout gagal");
+                error.setHeaderText("Logout Gagal");
                 error.setContentText("Tidak dapat membuka halaman login.");
                 error.showAndWait();
             }

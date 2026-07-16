@@ -62,7 +62,7 @@ public class DashboardHomeController {
                           String durasi,
                           String tahun,
                           String sutradara,
-                          String harga,
+                          int harga,
                           String sinopsis,
                           String posterPath) {
 
@@ -113,7 +113,7 @@ public class DashboardHomeController {
                 "2 Jam 11 Menit",
                 "2013",
                 "Guillermo del Toro",
-                "Rp35000",
+                35000,
                 "Ketika makhluk raksasa bernama Kaiju muncul dari sebuah celah antardimensi di dasar Samudra Pasifik, umat manusia berada di ambang kepunahan. Untuk melawan ancaman tersebut, berbagai negara bekerja sama menciptakan robot raksasa yang disebut Jaeger, yang dikendalikan oleh dua pilot melalui koneksi saraf yang disebut Drift.\n" +
                         "\n" +
                         "Mantan pilot Jaeger, Raleigh Becket, yang pensiun setelah kehilangan saudaranya dalam pertempuran, dipanggil kembali untuk bergabung dalam misi terakhir melawan para Kaiju. Ia dipasangkan dengan Mako Mori, seorang pilot muda yang memiliki tekad kuat untuk membalas dendam atas kehancuran yang disebabkan Kaiju.\n" +
@@ -137,8 +137,8 @@ public class DashboardHomeController {
                 "1 Jam 47 Menit",
                 "2016",
                 "Ron Clements",
-                "Rp35000",
-                "Moana berlayar melintasi lautan untuk menyelamatkan desanya bersama Maui.",
+                40000,
+                "Moana (2016) mengisahkan Moana, putri pemberani dari suku Polinesia di Pulau Motunui, yang dipilih oleh samudra untuk mengembalikan jantung Dewi Te Fiti. Ditemani dewa Maui, ia mengarungi lautan berbahaya untuk menyelamatkan pulaunya dari kutukan kegelapan.",
                 "/Image/moana1.jpeg"
         );
 
