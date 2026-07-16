@@ -100,10 +100,6 @@ public class DashboardHomeController {
 
     }
 
-    // =====================================================
-    // PACIFIC RIM
-    // =====================================================
-
     @FXML
     private void pilihpacificrim() {
 
@@ -124,10 +120,6 @@ public class DashboardHomeController {
 
     }
 
-    // =====================================================
-    // MOANA 1
-    // =====================================================
-
     @FXML
     private void pilihMoana1() {
 
@@ -140,6 +132,22 @@ public class DashboardHomeController {
                 40000,
                 "Moana (2016) mengisahkan Moana, putri pemberani dari suku Polinesia di Pulau Motunui, yang dipilih oleh samudra untuk mengembalikan jantung Dewi Te Fiti. Ditemani dewa Maui, ia mengarungi lautan berbahaya untuk menyelamatkan pulaunya dari kutukan kegelapan.",
                 "/Image/moana1.jpeg"
+        );
+
+    }
+
+    @FXML
+    private void pilihinglori() {
+
+        openFilm(
+                "Inglorious Basterds",
+                "History, War",
+                "2 Jam 33 Menit",
+                "2009",
+                "Quentin Tarantino.",
+                45000,
+                "Inglourious Basterds mengisahkan dua rencana pembunuhan para pemimpin Nazi di sebuah bioskop Paris pada masa Perang Dunia II. Rencana ini dijalankan oleh kelompok tentara Yahudi-Amerika brutal pimpinan Letnan Aldo Raine dan seorang gadis Yahudi yang ingin membalas dendam atas kematian keluarganya.",
+                "/Image/inglorious.jpg"
         );
 
     }

@@ -7,6 +7,7 @@ module com.bioskop.helloworld {
     requires org.json;
     requires com.google.zxing;
     requires javafx.swing;
+    requires java.sql;
 
 
     opens com.bioskop.helloworld to javafx.fxml;
